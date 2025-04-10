@@ -4,12 +4,12 @@ A passwordless login strategy for [Devise] using emailed magic links
 
 ## Features
 
-* No passwords - users receive magic link emails to register / sign-in
-* No database changes needed - magic links are stateless tokens
-* [Choose your token encoding algorithm or easily write your own](#tokenizers)
-* [Can be combined with traditional password authentication in the same model](#combining-password-and-passwordless-auth-in-the-same-model)
-* [Supports multiple user (resource) types](#multiple-user-resource-types)
-* All the goodness of Devise!
+- No passwords - users receive magic link emails to register / sign-in
+- No database changes needed - magic links are stateless tokens
+- [Choose your token encoding algorithm or easily write your own](#tokenizers)
+- [Can be combined with traditional password authentication in the same model](#combining-password-and-passwordless-auth-in-the-same-model)
+- [Supports multiple user (resource) types](#multiple-user-resource-types)
+- All the goodness of Devise!
 
 ## Call for maintainers 🗣️📣
 
@@ -22,7 +22,7 @@ We're currently looking for volunteers to help maintain this library! [See here 
 ⭐ The 1.0 release includes significant breaking changes! ⭐
 
 If you're upgrading from 0.x to 1.0, read [the upgrade guide][] for
-a list of changes you'll need to make.
+a list of changes you'll need to make. Test.
 
 [the upgrade guide]: https://github.com/abevoelker/devise-passwordless/blob/master/UPGRADING.md
 
@@ -52,7 +52,7 @@ See the [customization section](#customization) for details on what gets install
 
 ## Usage
 
-This gem adds a `:magic_link_authenticatable` strategy that can be used in your Devise models for passwordless authentication. This strategy plays well with most other Devise strategies (see [*compatibility with other Devise strategies*](#compatibility-with-other-devise-strategies)).
+This gem adds a `:magic_link_authenticatable` strategy that can be used in your Devise models for passwordless authentication. This strategy plays well with most other Devise strategies (see [_compatibility with other Devise strategies_](#compatibility-with-other-devise-strategies)).
 
 For example, if your Devise model is User, enable the strategy like this:
 
@@ -91,12 +91,12 @@ rm -f app/views/devise/mailer/reset_password_instructions.html.erb
 
 Then, edit these files to remove password references:
 
-* app/views/devise/registrations/new.html.erb
-  * Delete fields `:password` and `:password_confirmation`
-* app/views/devise/registrations/edit.html.erb
-  * Delete fields `:password`, `:password_confirmation`, `:current_password`
-* app/views/devise/sessions/new.html.erb
-  * Delete field `:password`
+- app/views/devise/registrations/new.html.erb
+  - Delete fields `:password` and `:password_confirmation`
+- app/views/devise/registrations/edit.html.erb
+  - Delete fields `:password`, `:password_confirmation`, `:current_password`
+- app/views/devise/sessions/new.html.erb
+  - Delete field `:password`
 
 That's it! 🎉 Now check out the customization section so that you
 may change the default configuration to better match your needs.
@@ -125,9 +125,9 @@ config.passwordless_tokenizer = "SignedGlobalIDTokenizer"
 # generate your own secret value with e.g. `rake secret`
 # config.passwordless_secret_key = nil
 
-# When using the :trackable module and MessageEncryptorTokenizer, set to true to 
-# consider magic link tokens generated before the user's current sign in time to 
-# be expired. In other words, each time you sign in, all existing magic links 
+# When using the :trackable module and MessageEncryptorTokenizer, set to true to
+# consider magic link tokens generated before the user's current sign in time to
+# be expired. In other words, each time you sign in, all existing magic links
 # will be considered invalid.
 # config.passwordless_expire_old_tokens_on_sign_in = false
 ```
@@ -290,11 +290,11 @@ Tokens are [Rails signed Global IDs][globalid]. This is the default for new inst
 
 Reasons to use or not use:
 
-* The implementation is short and simple, so less likely to be buggy
-* Should work with all ORMs that implement GlobalID support
-* Cannot add arbitrary metadata to generated tokens
-* Tokens are signed, not encrypted, so some data will be visible when base64-decoded
-* Tokens tend to be a little longer (~30 chars IME) than MessageEncryptors'
+- The implementation is short and simple, so less likely to be buggy
+- Should work with all ORMs that implement GlobalID support
+- Cannot add arbitrary metadata to generated tokens
+- Tokens are signed, not encrypted, so some data will be visible when base64-decoded
+- Tokens tend to be a little longer (~30 chars IME) than MessageEncryptors'
 
 [globalid]: https://github.com/rails/globalid
 
@@ -310,12 +310,12 @@ Tokens are encrypted using Rails's [MessageEncryptor][].
 
 Reasons to use or not use:
 
-* This was the only tokenizer in previous library versions
-* The implementation is longer and more involved than SignedGlobalID
-* Written with ActiveRecord in mind but may work with other ORMs
-* Can add arbitrary extra metadata to tokens
-* Tokens are opaque, due to being encrypted - no data visible when base64-decoded
-* Tokens tend to be a little shorter than SignedGlobalID IME
+- This was the only tokenizer in previous library versions
+- The implementation is longer and more involved than SignedGlobalID
+- Written with ActiveRecord in mind but may work with other ORMs
+- Can add arbitrary extra metadata to tokens
+- Tokens are opaque, due to being encrypted - no data visible when base64-decoded
+- Tokens tend to be a little shorter than SignedGlobalID IME
 
 ### Your own custom tokenizer
 
@@ -498,8 +498,8 @@ to support the different sign-in forms).
 
 ### Disabling password authentication or magic link authentication
 
-Rather than *all* your users having access to *both* authentication methods,
-it may be the case that you want *some* users to use magic links, *some*
+Rather than _all_ your users having access to _both_ authentication methods,
+it may be the case that you want _some_ users to use magic links, _some_
 to use passwords, or some combination between the two.
 
 This can be managed by defining some methods that disable the relevant
@@ -639,8 +639,8 @@ config.log_level = :warn
 
 Other Ruby libraries that offer passwordless authentication:
 
-* [passwordless](https://github.com/mikker/passwordless)
-* [magic-link](https://github.com/dvanderbeek/magic-link)
+- [passwordless](https://github.com/mikker/passwordless)
+- [magic-link](https://github.com/dvanderbeek/magic-link)
 
 ## Gem development
 
